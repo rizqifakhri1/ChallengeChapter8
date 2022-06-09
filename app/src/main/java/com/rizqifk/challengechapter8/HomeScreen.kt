@@ -34,16 +34,16 @@ fun HomeScreen(
             .background(color = colorResource(R.color.white)),
         contentAlignment = Alignment.BottomCenter
     ){
-        Text(
+        /*Text(
             modifier = Modifier.clickable {
                 navController.navigate(route = Screen.Detail.route)
             },
 
             text = "HomeScreen",
-            color = Color.White,
-            fontSize = 16.sp/*MaterialTheme.typography.h3.fontSize*/,
-            /*fontWeight = FontWeight.Bold*/
-        )
+            color = Color.Black,
+            fontSize = 16.sp*//*MaterialTheme.typography.h3.fontSize*//*,
+            *//*fontWeight = FontWeight.Bold*//*
+        )*/
     }
 
 
@@ -75,7 +75,7 @@ fun HomeScreen(
         
         Image(painter = painterResource(id = R.drawable.posterbig_blank), 
             contentDescription = "Poster Utama", 
-            Modifier.fillMaxWidth())
+            Modifier.fillMaxWidth().clickable { navController.navigate(route = Screen.Detail.route) })
         /*Spacer(modifier = Modifier.height(16.dp))*/
         Text(text = "Sedang Populer", fontWeight = FontWeight.Bold, fontSize = 24.sp, modifier = Modifier.padding(16.dp))
 
@@ -106,7 +106,28 @@ fun HomeScreen(
             }
 
         }
-
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "Rekomendasi", fontWeight = FontWeight.Bold, fontSize = 24.sp, modifier = Modifier.padding(16.dp))
+        Box(modifier = Modifier
+            .fillMaxSize(1f)
+        ){
+            Row(modifier = Modifier
+                .horizontalScroll(rememberScrollState())
+                .fillMaxWidth(1f)) {
+                Spacer(modifier = Modifier.width(16.dp))
+                ImageCard(painter = painter, contentDescriptor = description, title = title)
+                Spacer(modifier = Modifier.width(16.dp))
+                ImageCard(painter = painter, contentDescriptor = description, title = title)
+                Spacer(modifier = Modifier.width(16.dp))
+                ImageCard(painter = painter, contentDescriptor = description, title = title)
+                Spacer(modifier = Modifier.width(16.dp))
+                ImageCard(painter = painter, contentDescriptor = description, title = title)
+                Spacer(modifier = Modifier.width(16.dp))
+                ImageCard(painter = painter, contentDescriptor = description, title = title)
+                Spacer(modifier = Modifier.width(16.dp))
+            }
+        }
+        Spacer(modifier = Modifier.height(16.dp))
     }
 
 
