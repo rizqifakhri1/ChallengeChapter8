@@ -6,7 +6,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -58,7 +60,7 @@ fun HomeScreen(
             verticalAlignment = Alignment.CenterVertically
 
         ) {
-            Image(painter = painterResource(id = R.drawable.ic_profil),
+            Image(painter = painterResource(id = R.drawable.ic_profil_black),
                 contentDescription = "Image Profile",Modifier.size(54.dp))
             Spacer(modifier = Modifier.width(16.dp))
 
@@ -72,10 +74,18 @@ fun HomeScreen(
                 Text(text = "Mau Nonton Film Apa hari ini?")
             }
         }
+/*        var text by remember {
+            mutableStateOf(mutableStateOf("Sedang Cari Film Apa..."))
+        }*/
+        TextField(modifier = Modifier.fillMaxWidth(),
+            value = "Sedang Cari Film Apa...",
+            onValueChange = {})
         
         Image(painter = painterResource(id = R.drawable.posterbig_blank), 
-            contentDescription = "Poster Utama", 
-            Modifier.fillMaxWidth().clickable { navController.navigate(route = Screen.Detail.route) })
+            contentDescription = "Poster Utama",
+            Modifier
+                .fillMaxWidth()
+                .clickable { navController.navigate(route = Screen.Detail.route) })
         /*Spacer(modifier = Modifier.height(16.dp))*/
         Text(text = "Sedang Populer", fontWeight = FontWeight.Bold, fontSize = 24.sp, modifier = Modifier.padding(16.dp))
 
